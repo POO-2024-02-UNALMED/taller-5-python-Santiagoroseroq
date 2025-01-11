@@ -1,27 +1,27 @@
-# zooAnimales/mamifero.py
+__package__
+from zooAnimales.animal import Animal
 
-from zooAnimales.Animal import Animal
+class Ave(Animal):
+    halcones = 0
+    aguilas = 0
+    listado = []
 
-class Mamifero(Animal):
-    caballos = 0
-    leones = 0
+    def __init__(self, nombre, edad, habitat, genero, zona=None, colorPlumas=None):
+        super().__init__(nombre, edad, habitat, genero, zona)
+        if colorPlumas is not None:
+            self.colorPlumas = colorPlumas
+        self.listado.append(self)
 
-    def __init__(self, nombre, edad, genero, pelaje, patas, habitat, zona=None, zoo=None):
-        super().__init__(nombre, edad, genero, zona, zoo)
-        self.pelaje = pelaje
-        self.patas = patas
-        self.habitat = habitat
+    @classmethod
+    def crearHalcon(cls, nombre, edad, genero, zona=None):
+        cls.halcones += 1
+        return cls(nombre, edad, "montañas", genero, zona, colorPlumas="café glorioso")
 
-    def crearCaballo(self, nombre, edad, genero):
-        self.caballos += 1
-        return Mamifero(nombre, edad, genero, True, 4, "pradera")
+    @classmethod
+    def crearAguila(cls, nombre, edad, genero, zona=None):
+        cls.aguilas += 1
+        return cls(nombre, edad, "montañas", genero, zona, colorPlumas="blanco y amarillo")
 
-    def crearLeon(self, nombre, edad, genero):
-        self.leones += 1
-        return Mamifero(nombre, edad, genero, True, 4, "selva")
-
-    def cantidadMamiferos(self):
-        return Mamifero.caballos + Mamifero.leones
-
-    def movimiento(self):
-        return "caminar"
+    @classmethod
+    def cantidadAves(cls):
+        return len(cls.listado)
