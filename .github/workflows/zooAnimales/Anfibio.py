@@ -1,27 +1,31 @@
-# zooAnimales/anfibio.py
-
+__package__
 from zooAnimales.animal import Animal
 
 class Anfibio(Animal):
     ranas = 0
     salamandras = 0
+    listado = []
 
     def __init__(self, nombre, edad, genero, colorPiel, venenoso, habitat, zona=None, zoo=None):
         super().__init__(nombre, edad, genero, zona, zoo)
         self.colorPiel = colorPiel
         self.venenoso = venenoso
         self.habitat = habitat
+        self.listado.append(self)
 
-    def crearRana(self, nombre, edad, genero):
-        self.ranas += 1
-        return Anfibio(nombre, edad, genero, "rojo", True, "selva")
+    @classmethod
+    def crearRana(cls, nombre, edad, genero, zona=None, zoo=None):
+        cls.ranas += 1
+        return cls(nombre, edad, genero, "rojo", True, "selva", zona, zoo)
 
-    def crearSalamandra(self, nombre, edad, genero):
-        self.salamandras += 1
-        return Anfibio(nombre, edad, genero, "negro y amarillo", False, "selva")
+    @classmethod
+    def crearSalamandra(cls, nombre, edad, genero, zona=None, zoo=None):
+        cls.salamandras += 1
+        return cls(nombre, edad, genero, "negro y amarillo", False, "selva", zona, zoo)
 
-    def cantidadAnfibios(self):
-        return Anfibio.ranas + Anfibio.salamandras
+    @classmethod
+    def cantidadAnfibios(cls):
+        return len(cls.listado)
 
     def movimiento(self):
         return "saltar"
