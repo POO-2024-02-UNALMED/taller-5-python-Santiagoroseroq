@@ -1,4 +1,4 @@
-
+__package__
 
 class Zoologico:
     def __init__(self, nombre, ubicacion):
@@ -17,4 +17,3 @@ class Zoologico:
 
     def __str__(self):
         return f"Zoológico: {self.nombre}, Ubicación: {self.ubicacion}"
-
