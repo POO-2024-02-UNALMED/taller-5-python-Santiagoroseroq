@@ -1,5 +1,4 @@
-# zooAnimales/reptil.py
-
+__package__
 from zooAnimales.animal import Animal
 
 class Reptil(Animal):
