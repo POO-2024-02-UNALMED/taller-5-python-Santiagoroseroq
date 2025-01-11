@@ -1,8 +1,9 @@
 __package__ 
+
 class Zona:
-    def __init__(self, nombre, habitat):
+    def __init__(self, nombre, zoo):
         self.nombre = nombre
-        self.habitat = habitat
+        self.zoo=zoo
         self.animales = []
 
     def agregarAnimales(self, animal):
